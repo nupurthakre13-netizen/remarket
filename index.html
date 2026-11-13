@@ -1,0 +1,357 @@
+<!DOCTYPE html> <htm
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090d18">
+<title>ReMarket — Buy Smart. Sell Better.</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;600;700;800&display=swap');
+:root{
+ --bg:#090d18;--panel:#111827;--panel2:#172238;
+ --line:#263247;--text:#f5f7ff;--muted:#8995aa;
+ --blue:#7891ff;--mint:#53e0c1;
+ color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;background:var(--bg)!important;color:var(--text)!important;
+ font-family:'DM Sans',sans-serif;
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.topline{height:3px;background:linear-gradient(90deg,#7891ff,#c16cff,#53e0c1)}
+.container{width:min(1150px,92%);margin:auto}
+header{height:75px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:800}
+.logo-icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#7891ff,#53e0c1);color:#07101e;font-size:22px}
+.logo span:last-child{color:#91a7ff}
+nav{display:flex;gap:23px}
+nav a{color:#aab5c8;text-decoration:none;font-size:13px}
+nav a:hover{color:white}
+.btn{border:0;border-radius:11px;padding:12px 18px;background:linear-gradient(110deg,#6687ff,#8669f5);color:white;font-weight:700}
+.btn:hover{filter:brightness(1.12)}
+.secondary{border:1px solid var(--line);background:var(--panel);color:white;border-radius:10px;padding:10px 15px}
+.hero{border-block:1px solid #ffffff0b;background:radial-gradient(ellipse at 80% 30%,#354a982b,transparent 50%),#0d1425}
+.hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:75px 0}
+.eyebrow{display:inline-block;border:1px solid #7891ff40;color:#b5c2ff;background:#7891ff13;padding:8px 13px;border-radius:30px;font-size:11px;letter-spacing:1px}
+h1{font-family:Manrope,sans-serif;font-size:clamp(43px,6vw,69px);line-height:1.08;letter-spacing:-3px;margin:22px 0}
+.gradient{background:linear-gradient(90deg,#fff,#a4b4ff,#68e5d0);color:transparent;background-clip:text}
+.hero p{color:var(--muted);line-height:1.8;max-width:490px}
+.search{display:flex;gap:8px;background:var(--panel2);border:1px solid #ffffff17;border-radius:15px;padding:8px;margin-top:25px;max-width:520px}
+.search input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:white;padding:8px}
+.hero-art{border:1px solid #ffffff19;border-radius:26px;padding:18px;background:#111827;box-shadow:0 20px 80px #536fff20}
+.art-top{display:flex;justify-content:space-between;margin-bottom:14px}
+.art-top small{color:var(--muted)}
+.art-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.art-item{border:1px solid #ffffff15;border-radius:15px;background:linear-gradient(140deg,#333e7a,#172236);padding:12px;text-align:center}
+.art-item div{font-size:43px;padding:13px}
+.art-item b{font-size:12px}
+.art-item p{font-size:13px;margin:7px;color:white}
+section{padding:48px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:22px}
+.section-head h2{font-size:27px;margin:8px 0}
+.section-head small{color:#91a7ff;letter-spacing:2px;font-weight:700}
+.muted{color:var(--muted);font-size:13px}
+.categories{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+.category{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:17px 7px;text-align:center;color:white;transition:.2s}
+.category:hover,.category.active{border-color:var(--blue);background:#1a2540;transform:translateY(-3px)}
+.category div{font-size:27px}
+.category p{font-size:12px;margin:9px 0 0}
+.filters{display:flex;gap:8px;overflow:auto;padding-bottom:15px}
+.filter{white-space:nowrap;border:1px solid var(--line);color:#aab5c8;background:var(--panel);border-radius:25px;padding:9px 15px;font-size:12px}
+.filter.active{background:var(--blue);color:#08101e;border-color:var(--blue);font-weight:800}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.product{overflow:hidden;border:1px solid var(--line);background:var(--panel);border-radius:18px;transition:.2s}
+.product:hover{transform:translateY(-4px);border-color:#7891ff77}
+.product-image{height:190px;display:grid;place-items:center;font-size:72px;position:relative;background:linear-gradient(135deg,#29365e,#172236)}
+.product-image button{position:absolute;right:12px;top:12px;background:#080d18d9;border:0;border-radius:50%;width:36px;height:36px;color:white;font-size:19px}
+.tag{position:absolute;left:12px;top:12px;border-radius:20px;background:#090d18cc;padding:6px 10px;font-size:10px}
+.product-info{padding:16px}
+.product-info h3{font-size:15px;margin:0}
+.price-row{display:flex;justify-content:space-between;gap:8px;margin-top:13px}
+.price{font-size:18px;font-weight:800}
+.location{font-size:11px;color:var(--muted);margin-top:13px}
+.details{width:100%;margin-top:14px;padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--panel2);color:white;font-weight:700;font-size:12px}
+.empty{grid-column:1/-1;text-align:center;padding:55px;border:1px solid var(--line);border-radius:16px;color:var(--muted)}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.how-card{padding:23px;border:1px solid var(--line);border-radius:17px;background:var(--panel)}
+.how-card strong{color:#91a7ff}
+.how-card p{color:var(--muted);font-size:13px;line-height:1.7}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:12px}
+footer .container{display:flex;justify-content:space-between;gap:15px}
+footer a{color:#aab5c8;text-decoration:none}
+/* ALL MODALS */
+.modal{
+ display:none;position:fixed;inset:0;z-index:9999;
+ background:rgba(0,0,0,.82);
+ backdrop-filter:blur(9px);
+ -webkit-backdrop-filter:blur(9px);
+ align-items:center;justify-content:center;padding:14px;
+}
+.modal.open{display:flex}
+.modal-box{
+ width:min(540px,100%);max-height:92dvh;overflow:auto;
+ background:#111827!important;color:#f5f7ff!important;
+ border:1px solid #35435c;border-radius:20px;padding:22px;
+ box-shadow:0 25px 100px #000;
+}
+.modal-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.modal-head h2{font-size:21px;margin:5px 0}
+.close-btn{background:#263247!important;color:white!important;border:1px solid #40506b;border-radius:10px;width:38px;height:38px;font-size:23px;flex-shrink:0}
+.form-field{margin:15px 0}
+.form-field label{display:block;color:#aab5c8;font-size:12px;margin-bottom:8px}
+.form-field input,.form-field textarea,.form-field select{
+ width:100%;padding:12px;border:1px solid var(--line);
+ border-radius:10px;background:#090d18!important;color:white!important;outline:none;
+}
+.form-field textarea{resize:vertical}
+.notice{color:#eacb83;font-size:11px;line-height:1.6;margin-top:15px}
+/* PROFESSIONAL ADMIN DASHBOARD */
+.admin-box{width:min(850px,100%);padding:0;overflow:auto}
+.admin-top{padding:22px;background:linear-gradient(130deg,#192746,#111827);border-bottom:1px solid var(--line)}
+.admin-brand{display:flex;align-items:center;gap:12px}
+.admin-brand .logo-icon{width:44px;height:44px}
+.admin-brand small{color:#9cacc6;font-size:11px}
+.admin-content{padding:22px}
+.admin-welcome{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.admin-welcome h2{font-size:22px;margin:5px 0}
+.demo-label{font-size:10px;background:#453617;color:#f4d38a;padding:7px 11px;border-radius:20px}
+.admin-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}
+.stat{background:#0b1220!important;border:1px solid #293751;padding:17px;border-radius:14px}
+.stat small{color:#99a6bd;font-size:11px}
+.stat h2{font-size:27px;margin:10px 0 0;color:white}
+.stat-icon{font-size:21px;margin-bottom:12px}
+.admin-tabs{display:flex;gap:8px;overflow:auto;border-bottom:1px solid var(--line);padding-bottom:12px;margin:15px 0}
+.admin-tab{white-space:nowrap;background:transparent;color:#9aa9bf;border:1px solid var(--line);border-radius:9px;padding:9px 13px;font-size:12px}
+.admin-tab.active{background:#25365d;color:white;border-color:#7891ff}
+.admin-section{background:#0c1423;border:1px solid var(--line);border-radius:14px;padding:17px;margin-top:14px}
+.admin-section h3{margin:0 0 14px;font-size:16px}
+.admin-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 0;border-bottom:1px solid var(--line);font-size:12px}
+.admin-row:last-child{border:0}
+.small-btn{padding:7px 10px;border-radius:8px;border:1px solid var(--line);background:#1a2942;color:white;font-size:11px}
+.danger{color:#ff9999;border-color:#71404a}
+.admin-note{background:#292515;border:1px solid #63532b;color:#e8d69e;border-radius:11px;padding:12px;font-size:11px;line-height:1.6;margin-top:17px}
+.admin-view{display:none}
+.admin-view.active{display:block}
+.toast{
+ position:fixed;bottom:22px;left:50%;transform:translateX(-50%);
+ z-index:10001;background:#172238;border:1px solid #52658a;
+ color:white;padding:12px 18px;border-radius:12px;font-size:13px;
+ display:none;max-width:90%;text-align:center;
+}
+@media(max-width:800px){
+ nav{display:none}
+ .hero-inner{grid-template-columns:1fr;padding:48px 0}
+ .hero-art{max-width:440px;width:100%;margin:auto}
+ .categories{grid-template-columns:repeat(4,1fr)}
+ .products{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:520px){
+ .logo{font-size:17px}
+ .logo-icon{width:35px;height:35px}
+ h1{letter-spacing:-2px}
+ .search{flex-wrap:wrap}
+ .search input{width:100%;flex-basis:100%}
+ .search button{width:100%}
+ .products{grid-template-columns:1fr}
+ .product-image{height:210px}
+ .how-grid{grid-template-columns:1fr}
+ .categories{grid-template-columns:repeat(3,1fr);gap:8px}
+ .category{padding:13px 5px}
+ .admin-stats{grid-template-columns:1fr}
+ .admin-content,.admin-top{padding:16px}
+ footer .container{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header class="container">
+ <div class="logo"><div class="logo-icon">R</div>Re<span>Market</span></div>
+ <nav>
+  <a href="#">Home</a><a href="#categories">Categories</a>
+  <a href="#explore">Explore</a><a href="#how">How it works</a>
+ </nav>
+ <button class="btn" id="sellOpen">＋ Sell item</button>
+</header>
+<section class="hero">
+ <div class="container hero-inner">
+  <div>
+   <span class="eyebrow">✦ THE SMARTER MARKETPLACE</span>
+   <h1>Good finds.<br><span class="gradient">Better value.</span></h1>
+   <p>Discover quality pre-loved products, connect with local sellers and give great things a second life.</p>
+   <div class="search">
+    <input id="searchInput" placeholder="Search phones, laptops, furniture...">
+    <button class="btn" id="searchButton">Search products</button>
+   </div>
+   <p>✦ Safer community　✦ Local discoveries　✦ Smart shopping</p>
+  </div>
+  <div class="hero-art">
+   <div class="art-top"><div><small>CURATED FOR YOU</small><br><b>Today's good finds</b></div><small style="color:#53e0c1">● Demo picks</small></div>
+   <div class="art-grid">
+    <div class="art-item"><div>📱</div><b>Smartphones</b><p>From ₹5,999</p></div>
+    <div class="art-item"><div>💻</div><b>Laptops</b><p>From ₹12,999</p></div>
+    <div class="art-item"><div>🎧</div><b>Accessories</b><p>From ₹499</p></div>
+    <div class="art-item"><div>🪑</div><b>Furniture</b><p>From ₹999</p></div>
+   </div>
+  </div>
+ </div>
+</section>
+<section class="container" id="categories">
+ <div class="section-head"><div><small>BROWSE BY INTEREST</small><h2>Explore categories</h2></div></div>
+ <div class="categories" id="categoryGrid"></div>
+</section>
+<section class="container" id="explore">
+ <div class="section-head"><div><small>HANDPICKED MARKETPLACE</small><h2>Find your next favourite</h2><p class="muted">Explore sample product listings.</p></div></div>
+ <div class="filters" id="filterBar"></div>
+ <div class="products" id="productGrid"></div>
+</section>
+<section class="container" id="how">
+ <div class="section-head"><div><small>SIMPLE BY DESIGN</small><h2>A better way to buy and sell.</h2></div></div>
+ <div class="how-grid">
+  <div class="how-card"><strong>01</strong><h3>Discover</h3><p>Search nearby listings and find products that interest you.</p></div>
+  <div class="how-card"><strong>02</strong><h3>Connect</h3><p>Contact the seller and discuss product details and price.</p></div>
+  <div class="how-card"><strong>03</strong><h3>Give it a new home</h3><p>Meet safely and complete your purchase directly.</p></div>
+ </div>
+</section>
+<footer>
+ <div class="container">
+  <span>© 2026 ReMarket. Buy Smart. Sell Better.</span>
+  <span>
+   <a href="#how">About</a> · <a href="#how">Safety</a> ·
+   <a href="#" id="adminOpen">Admin Dashboard</a>
+  </span>
+ </div>
+</footer>
+<!-- PRODUCT DETAILS -->
+<div class="modal" id="detailModal">
+ <div class="modal-box">
+  <div class="modal-head"><h2>Product details</h2><button class="close-btn" data-close="detailModal" type="button">×</button></div>
+  <div id="detailContent"></div>
+ </div>
+</div>
+<!-- SELL FORM -->
+<div class="modal" id="sellModal">
+ <div class="modal-box">
+  <div class="modal-head"><h2>List your product</h2><button class="close-btn" data-close="sellModal" type="button">×</button></div>
+  <form id="sellForm">
+   <div class="form-field"><label>Product name</label><input id="sellName" required maxlength="70" placeholder="Enter product name"></div>
+   <div class="form-field"><label>Category</label><select id="sellCategory">
+    <option>Mobiles</option><option>Electronics</option><option>Furniture</option><option>Fashion</option><option>Books</option><option>Sports</option><option>Other</option>
+   </select></div>
+   <div class="form-field"><label>Price (₹)</label><input id="sellPrice" type="number" min="1" required placeholder="Enter price"></div>
+   <div class="form-field"><label>Condition</label><select id="sellCondition"><option>Like New</option><option>Good</option><option>Fair</option></select></div>
+   <div class="form-field"><label>City</label><input id="sellCity" required maxlength="50" placeholder="Your city"></div>
+   <div class="form-field"><label>Description</label><textarea id="sellDescription" rows="3" maxlength="500" placeholder="Describe your product"></textarea></div>
+   <button class="btn" style="width:100%">Add demo listing</button>
+  </form>
+  <p class="notice">Demo mode: listings are saved only in this browser.</p>
+ </div>
+</div>
+<!-- ADMIN DASHBOARD -->
+<div class="modal" id="adminModal">
+ <div class="modal-box admin-box">
+  <div class="admin-top">
+   <div class="modal-head">
+    <div class="admin-brand"><div class="logo-icon">R</div><div><b>ReMarket Admin</b><br><small>CONTROL CENTRE · VERSION 1.1</small></div></div>
+    <button class="close-btn" data-close="adminModal" type="button" aria-label="Close dashboard">×</button>
+   </div>
+  </div>
+  <div class="admin-content">
+   <div class="admin-welcome">
+    <div><small class="muted">OVERVIEW</small><h2>Dashboard</h2><p class="muted">Welcome to your marketplace control centre.</p></div>
+    <span class="demo-label">● DEMO MODE</span>
+   </div>
+   <div class="admin-stats">
+    <div class="stat"><div class="stat-icon">📦</div><small>Total Listings</small><h2 id="adminListings">0</h2></div>
+    <div class="stat"><div class="stat-icon">❤️</div><small>Favourites</small><h2 id="adminFavourites">0</h2></div>
+    <div class="stat"><div class="stat-icon">📢</div><small>Campaigns</small><h2 id="adminAds">0</h2></div>
+   </div>
+   <div class="admin-tabs">
+    <button class="admin-tab active" data-tab="overview">Overview</button>
+    <button class="admin-tab" data-tab="listings">Listings</button>
+    <button class="admin-tab" data-tab="advertisements">Advertisements</button>
+   </div>
+   <div class="admin-view active" id="view-overview">
+    <div class="admin-section">
+     <h3>Quick actions</h3>
+     <div class="admin-row"><span>➕ Add a new product</span><button class="small-btn" id="adminAddProduct">Open form</button></div>
+     <div class="admin-row"><span>📦 View product listings</span><button class="small-btn" data-goto="listings">View</button></div>
+     <div class="admin-row"><span>📢 Manage campaigns</span><button class="small-btn" data-goto="advertisements">Manage</button></div>
+    </div>
+    <div class="admin-section">
+     <h3>Platform status</h3>
+     <div class="admin-row"><span>Website frontend</span><span style="color:#53e0c1">● Active</span></div>
+     <div class="admin-row"><span>Database</span><span style="color:#eacb83">Not connected</span></div>
+     <div class="admin-row"><span>User authentication</span><span style="color:#eacb83">Not connected</span></div>
+    </div>
+   </div>
+   <div class="admin-view" id="view-listings">
+    <div class="admin-section">
+     <h3>Product management</h3>
+     <div id="adminProductList"></div>
+    </div>
+   </div>
+   <div class="admin-view" id="view-advertisements">
+    <div class="admin-section">
+     <h3>Create advertisement</h3>
+     <div class="form-field"><label>Campaign title</label><input id="adTitle" placeholder="Enter campaign name"></div>
+     <div class="form-field"><label>Placement</label><select id="adPlacement"><option>Homepage</option><option>Explore feed</option><option>Category page</option></select></div>
+     <button class="btn" id="addAd" style="width:100%">Save demo campaign</button>
+     <div id="adList" style="margin-top:15px"></div>
+    </div>
+   </div>
+   <div class="admin-note">⚠ DEMO ADMIN: This dashboard has no login protection and is not connected to a secure backend. Do not use it for real customer data, payments or private information.</div>
+  </div>
+ </div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const categories=[
+ ["All","✨"],["Mobiles","📱"],["Electronics","🎮"],
+ ["Furniture","🪑"],["Fashion","👕"],["Books","📚"],["Sports","🚲"]
+];
+const demoProducts=[
+ {id:1,name:"iPhone 13 · 128GB",price:28999,category:"Mobiles",condition:"Like New",city:"Bhopal",emoji:"📱",description:"Sample smartphone listing."},
+ {id:2,name:"Minimal Study Desk",price:4200,category:"Furniture",condition:"Good",city:"Indore",emoji:"🪑",description:"Sample study desk listing."},
+ {id:3,name:"Sony Wireless Headphones",price:5499,category:"Electronics",condition:"Like New",city:"Bhopal",emoji:"🎧",description:"Sample headphones listing."},
+ {id:4,name:"Canon EOS Camera",price:21900,category:"Electronics",condition:"Good",city:"Jabalpur",emoji:"📷",description:"Sample camera listing."},
+ {id:5,name:"Mountain Bicycle",price:7800,category:"Sports",condition:"Good",city:"Bhopal",emoji:"🚲",description:"Sample bicycle listing."},
+ {id:6,name:"Study Book Bundle",price:850,category:"Books",condition:"Good",city:"Sagar",emoji:"📚",description:"Sample book listing."}
+];
+function load(key,fallback){
+ try{
+  const v=localStorage.getItem(key);
+  return v===null?fallback:JSON.parse(v);
+ }catch(e){return fallback}
+}
+function save(key,value){
+ try{localStorage.setItem(key,JSON.stringify(value));return true}
+ catch(e){return false}
+}
+let products=load("remarket_products",demoProducts);
+let favourites=load("remarket_favourites",[]);
+let ads=load("remarket_ads",[]);
+let activeCategory="All";
+const $=id=>document.getElementById(id);
+const money=n=>"₹"+Number(n).toLocaleString("en-IN");
+function escapeHTML(s){
+ return String(s).replace(/[&<>"']/g,c=>({
+ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[c]));
+}
+function notify(message){
+ const t=$("toast");
+ t.textContent=message;t.style.display="block";
+ clearTimeout(notify.timer);
+ notify.timer=setTimeout(()=>t.style.display="none",2600);
+}
+function renderCategories(){
+ $("categoryGrid").innerHTML=categories.map(c=>
+ `<button class="category ${activeCategory===c[0]?"active":""}" data-category="${c[0]}"><div>${c[1]}</div><p>${c[0]}</p></button>`
+ ).join("");
+ $("filterBar").innerHTML=categories.map(c=>
+ `<button class="filter ${activeCategory===c[0]?"active":""}" data-category="${c[0]}"
